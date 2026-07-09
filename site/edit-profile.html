@@ -25,11 +25,12 @@
 
     <form class="field" style="gap:16px" onsubmit="event.preventDefault(); window.location.href='profile.html';">
       <div class="field">
-        <label class="field__label" for="my-name">Nombre completo</label>
+        <label class="field__label" for="my-name">Nombre</label>
         <div class="field__control">
           <span class="ms">person</span>
-          <input id="my-name" type="text" value="Valentina Reyes" required autocomplete="name">
+          <input id="my-name" data-capture-name type="text" value="Valentina" required autocomplete="given-name">
         </div>
+        <div class="field__hint">Solo tu primer nombre — no pedimos apellidos, para minimizar los datos que tratamos (Ley 21.719).</div>
       </div>
 
       <div class="field">

@@ -4,8 +4,8 @@ Monolito clásico en Laravel, patrón MVC. Se prioriza cohesión y velocidad de 
 
 ## Modelos (Eloquent ORM)
 
-- **User** — cuidador principal. Datos de cuenta y rol (usuario/administrador).
-- **Newborn** — perfil del lactante: nombre, fecha de nacimiento, semanas de gestación (para cálculo de edad corregida si nació prematuro).
+- **User** — cuidador principal. Datos de cuenta (solo primer nombre, no apellidos — minimización de datos bajo Ley 21.719) y rol de permisos (usuario/administrador). Incluye además el **vínculo con el bebé** (madre / padre / otro cuidador): no cambia permisos, solo adapta el copy de bienestar — el `DynamicContextController` no debe asumir recuperación física post-parto ni experiencia de gestación al generar contención emocional para un cuidador que no dio a luz. Al crear la cuenta debe quedar registro auditable de cuándo se dio el consentimiento explícito de datos sensibles y a qué versión de la política (no basta con la casilla marcada en el momento).
+- **Newborn** — perfil del lactante: nombre (solo primer nombre), fecha de nacimiento, semanas de gestación (para cálculo de edad corregida si nació prematuro), puntaje Apgar al minuto 1 y 5 (opcional — da contexto sobre condiciones especiales al nacer, más allá de la prematurez).
 - **MentalHealthLog** — registro diario del cuidador: horas de sueño percibidas, estado de ánimo (escala de 5), nivel de ansiedad (escala continua), nota libre opcional. Es la fuente de datos que alimenta al `DynamicContextController`.
 - **Screening** — resultados del tamizaje breve autoadministrado (indicadores de estrés/depresión perinatal). Guarda puntaje y nivel resultante (leve / leve-moderado / alto).
 - **MedicalAndPsychologicalGuideline** — repositorio documental indexado, dividido en dos líneas:

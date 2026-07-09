@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initScreening();
   initCheckboxes();
   initConsentForms();
+  initNameCapture();
+  initPersonalization();
 });
 
 /* Resalta el ítem activo del nav inferior según data-page en <body> */
@@ -72,9 +74,71 @@ function initConsentForms() {
         return;
       }
       if (errorEl) errorEl.style.display = "none";
+
+      // Si el formulario captura nombre y/o rol de vínculo con el bebé
+      // (ej. register.html), los guardamos para personalizar Perfil/Dashboard.
+      const roleChip = form.querySelector(".chip-option.is-selected[data-role]");
+      const nameField = form.querySelector("[data-capture-name]");
+      try {
+        if (roleChip) sessionStorage.setItem("cuidaria_role", roleChip.dataset.role);
+        if (nameField && nameField.value) sessionStorage.setItem("cuidaria_name", nameField.value);
+      } catch (err) {
+        /* sessionStorage puede no estar disponible (modo privado); seguimos igual */
+      }
+
       if (redirect) window.location.href = redirect;
     });
   });
+}
+
+/* Formularios normales (no de consentimiento, ej. edit-profile.html) que
+   también capturan el nombre para personalizar Perfil/Dashboard. */
+function initNameCapture() {
+  document.querySelectorAll("form[data-consent-form]").forEach((form) => form.dataset.captured = "1");
+  document.querySelectorAll("form").forEach((form) => {
+    if (form.dataset.captured === "1") return; // ya lo maneja initConsentForms
+    const nameField = form.querySelector("[data-capture-name]");
+    if (!nameField) return;
+    form.addEventListener("submit", () => {
+      if (!nameField.value) return;
+      try {
+        sessionStorage.setItem("cuidaria_name", nameField.value);
+      } catch (e) {
+        /* sessionStorage puede no estar disponible (modo privado); seguimos igual */
+      }
+    });
+  });
+}
+
+/* Personaliza nombre y rol de vínculo con el bebé (madre/padre/otro cuidador)
+   guardados durante el registro. Si no hay nada guardado, no toca el HTML
+   por defecto (Valentina / Madre de Lucas). */
+const ROLE_LABELS = {
+  madre: "Madre de Lucas",
+  padre: "Padre de Lucas",
+  otro: "Cuidador/a de Lucas",
+};
+
+function initPersonalization() {
+  let name = null;
+  let role = null;
+  try {
+    name = sessionStorage.getItem("cuidaria_name");
+    role = sessionStorage.getItem("cuidaria_role");
+  } catch (e) {
+    return;
+  }
+
+  if (name) {
+    document.querySelectorAll("[data-personalized-name]").forEach((el) => {
+      el.textContent = name;
+    });
+  }
+  if (role && ROLE_LABELS[role]) {
+    document.querySelectorAll("[data-role-chip]").forEach((el) => {
+      el.textContent = ROLE_LABELS[role];
+    });
+  }
 }
 
 /* Chat: selector "Sobre el bebé" / "Para mí" */

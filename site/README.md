@@ -8,8 +8,8 @@ Implementación real (no maqueta de canvas) de las pantallas descritas en `docs/
 |---|---|
 | `index.html` | Landing |
 | `login.html` | Login |
-| `register.html` | Crear cuenta — incluye consentimiento explícito y separado para datos sensibles (Ley 21.719), validado en JS antes de avanzar |
-| `register-baby.html` | Onboarding del bebé (paso 2 de 2 tras crear cuenta): nombre, fecha de nacimiento, semanas de gestación |
+| `register.html` | Crear cuenta — solo primer nombre (minimización de datos), selector de rol (madre/padre/otro cuidador), consentimiento explícito y separado para datos sensibles (Ley 21.719), validado en JS antes de avanzar |
+| `register-baby.html` | Onboarding del bebé (paso 2 de 2 tras crear cuenta): nombre (solo primer nombre), fecha de nacimiento, semanas de gestación, puntaje Apgar (opcional) |
 | `dashboard.html` | Dashboard del padre/madre |
 | `chat.html` | Chat dual — "Sobre el bebé" / "Para mí" (toggle en JS) |
 | `mood-log.html` | Bitácora emocional diaria |
@@ -23,6 +23,7 @@ Implementación real (no maqueta de canvas) de las pantallas descritas en `docs/
 | `edit-profile.html` | Editar los datos de la cuenta del cuidador (nombre, correo, contraseña) |
 | `edit-baby.html` | Editar los datos del bebé — mismos campos que `register-baby.html`, precargados |
 | `privacy.html` | Privacidad y datos de salud — alineada con la Ley 21.719 (ver nota legal abajo) |
+| `terms.html` | Términos y condiciones — deslinde médico explícito ("no somos médicos, no diagnosticamos") y derivación a urgencias |
 | `help.html` | Ayuda y contacto — canales de soporte + FAQ (`<details>` nativo) |
 | `qr.html` | Lámina QR (material impreso/hospital) |
 
@@ -33,12 +34,16 @@ Refleja la **Ley 21.719 de Protección de Datos Personales de Chile**, vigente e
 ## Estructura compartida
 
 - `assets/css/main.css` — tokens de diseño (`:root` con las variables de `docs/DESIGN-SYSTEM.md`) y componentes (botones, tarjetas, chips, alertas, burbujas de chat, nav inferior, formularios, consentimiento, etc.).
-- `assets/js/main.js` — interacciones: nav inferior activo (`data-page` en `<body>`), mostrar/ocultar contraseña (soporta varios campos por página), toggle de modo de chat, selector de ánimo, chips de selección, flujo del tamizaje, checkboxes genéricos (`data-checkbox`) y formularios con consentimiento obligatorio (`data-consent-form` + `data-redirect`, ver nota abajo).
+- `assets/js/main.js` — interacciones: nav inferior activo (`data-page` en `<body>`), mostrar/ocultar contraseña (soporta varios campos por página), toggle de modo de chat, selector de ánimo, chips de selección, flujo del tamizaje, checkboxes genéricos (`data-checkbox`), formularios con consentimiento obligatorio (`data-consent-form` + `data-redirect`, ver nota abajo), y personalización de nombre/rol (`data-capture-name`, `data-personalized-name`, `data-role-chip`, ver nota abajo).
 - `assets/img/qr.svg` — el mismo SVG del mockup importado.
 
 ## Consentimiento de datos sensibles en formularios (`register.html`)
 
 Los formularios que piden autorización para tratar datos sensibles usan `data-consent-form` en el `<form>`, `data-checkbox data-required` en cada casilla obligatoria y `data-redirect="siguiente.html"` en vez de un `onsubmit` inline. Esto es intencional: la navegación de éxito vive en `initConsentForms` (`main.js`), no en el HTML, para que ningún atajo (como un `onsubmit` puesto sin querer en un formulario nuevo) pueda saltarse la validación de que ambas casillas — términos generales y autorización específica de datos sensibles — estén marcadas.
+
+## Personalización por nombre y rol (madre/padre/otro cuidador)
+
+`register.html` incluye un selector de rol (`.chip-option[data-role]`) y un campo de nombre (`[data-capture-name]`). Al enviarse un formulario con éxito (`initConsentForms`) o cualquier otro formulario marcado con `[data-capture-name]` (`initNameCapture`, para `edit-profile.html`), el nombre y el rol elegido se guardan en `sessionStorage` (`cuidaria_name`, `cuidaria_role`). `initPersonalization` los aplica en cualquier página que tenga `[data-personalized-name]` (saludo del Dashboard, encabezado de Perfil) o `[data-role-chip]` (el chip "Madre/Padre/Cuidador de Lucas" en Perfil) — si no hay nada guardado, no toca el HTML por defecto ("Valentina" / "Madre de Lucas"), así que entrar directo a cualquier página sin pasar por el registro se ve igual que antes. En Blade esto pasa a ser dato real de sesión/usuario en vez de `sessionStorage`.
 
 ## Notas para la migración a Blade (Fase 2)
 
@@ -47,3 +52,5 @@ Los formularios que piden autorización para tratar datos sensibles usan `data-c
 - Los nombres de componentes Blade sugeridos en `docs/DESIGN-SYSTEM.md` (`<x-mood-log>`, `<x-screening-question>`, `<x-chat-mode-toggle>`, `<x-wellbeing-summary-card>`) corresponden a bloques ya identificables en `mood-log.html`, `screening.html` y `chat.html`.
 - `register-baby.html` y `edit-baby.html` comparten exactamente los mismos campos (nombre, fecha de nacimiento, semanas de gestación) porque ambos escriben al mismo modelo `Newborn` (ver `docs/ARCHITECTURE.md`) — en Blade debieran converger en una sola vista con prefill condicional en vez de mantenerse duplicados.
 - El consentimiento explícito de datos sensibles en `register.html` debe volver a pedirse en el backend (no basta con la validación de JS del prototipo): la Ley 21.719 exige poder demostrar cuándo y a qué versión del texto se dio el consentimiento, así que en Laravel esto probablemente signifique guardar una fila de auditoría (usuario, fecha, versión de la política) al crear la cuenta.
+- El rol de vínculo con el bebé (madre/padre/otro cuidador) hoy solo cambia un chip de texto en `profile.html` como prueba de concepto; en Laravel debería also influir el tono que arma el `DynamicContextController` (ver `docs/ARCHITECTURE.md`) para no asumir recuperación post-parto en un cuidador que no gestó.
+- El puntaje Apgar en `register-baby.html`/`edit-baby.html` es opcional a propósito — no todos los cuidadores lo tendrán a mano al registrarse, así que el backend no debería bloquear el alta de la cuenta por no completarlo.

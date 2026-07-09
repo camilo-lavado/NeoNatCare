@@ -25,11 +25,22 @@
 
     <form class="field" style="gap:16px" data-consent-form data-redirect="register-baby.html">
       <div class="field">
-        <label class="field__label" for="name">Nombre completo</label>
+        <label class="field__label" for="name">Nombre</label>
         <div class="field__control">
           <span class="ms">person</span>
-          <input id="name" type="text" placeholder="Valentina Reyes" required autocomplete="name">
+          <input id="name" data-capture-name type="text" placeholder="Valentina" required autocomplete="given-name">
         </div>
+        <div class="field__hint">Solo tu primer nombre — no pedimos apellidos, para minimizar los datos que tratamos (Ley 21.719).</div>
+      </div>
+
+      <div class="field">
+        <label class="field__label">¿Cuál es tu rol?</label>
+        <div class="chip-row" data-chip-group>
+          <button type="button" class="chip-option is-selected" data-role="madre">Madre</button>
+          <button type="button" class="chip-option" data-role="padre">Padre</button>
+          <button type="button" class="chip-option" data-role="otro">Otro cuidador</button>
+        </div>
+        <div class="field__hint">Usamos esto solo para adaptar el copy de la app a tu rol — la orientación clínica del bebé es la misma para todos.</div>
       </div>
 
       <div class="field">
@@ -60,7 +71,7 @@
 
       <label class="consent">
         <span class="checkbox" data-checkbox data-required></span>
-        <span class="consent__text">Acepto los <a href="#" style="color:var(--p);font-weight:700">Términos y condiciones</a> y la <a href="privacy.html" style="color:var(--p);font-weight:700">Política de privacidad</a>.</span>
+        <span class="consent__text">Acepto los <a href="terms.html" style="color:var(--p);font-weight:700">Términos y condiciones</a> y la <a href="privacy.html" style="color:var(--p);font-weight:700">Política de privacidad</a>.</span>
       </label>
 
       <label class="consent consent--sensitive">

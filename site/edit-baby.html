@@ -25,6 +25,7 @@
           <span class="ms">child_care</span>
           <input id="baby-name" type="text" value="Lucas" required autocomplete="off">
         </div>
+        <div class="field__hint">Solo su primer nombre.</div>
       </div>
 
       <div class="field">
@@ -42,6 +43,21 @@
           <input id="baby-weeks" type="number" min="22" max="42" value="35" required>
         </div>
         <div class="field__hint">Si nació antes de las 37 semanas, usamos esto para calcular su edad corregida.</div>
+      </div>
+
+      <div class="field">
+        <label class="field__label">Puntaje Apgar <span style="font-weight:600;color:var(--ink2)">(opcional)</span></label>
+        <div class="flex-row" style="gap:10px;align-items:flex-start">
+          <div class="flex-1">
+            <div class="field__hint" style="margin:0 0 6px">Minuto 1</div>
+            <div class="field__control"><input id="apgar-1" type="number" min="0" max="10" value="8" inputmode="numeric"></div>
+          </div>
+          <div class="flex-1">
+            <div class="field__hint" style="margin:0 0 6px">Minuto 5</div>
+            <div class="field__control"><input id="apgar-5" type="number" min="0" max="10" value="9" inputmode="numeric"></div>
+          </div>
+        </div>
+        <div class="field__hint">Lo encuentras en el carné del niño sano. Nos da contexto sobre condiciones especiales al nacer (la prematurez ya la calculamos con las semanas de gestación).</div>
       </div>
 
       <button type="submit" class="btn btn-primary mt-auto">
