@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editar mi perfil — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="edit-profile">
+<div class="app">
+  <div class="topbar">
+    <a href="profile.html" class="ms topbar__icon">arrow_back_ios_new</a>
+    <div class="topbar__title">Editar mi perfil</div>
+  </div>
+
+  <div class="page">
+    <div class="flex-row" style="justify-content:center">
+      <div class="placeholder" style="width:72px;height:72px;border-radius:999px;font-size:9px">foto</div>
+    </div>
+    <a href="#" class="btn-link" style="text-align:center;margin-top:-10px">Cambiar foto</a>
+
+    <form class="field" style="gap:16px" onsubmit="event.preventDefault(); window.location.href='profile.html';">
+      <div class="field">
+        <label class="field__label" for="my-name">Nombre completo</label>
+        <div class="field__control">
+          <span class="ms">person</span>
+          <input id="my-name" type="text" value="Valentina Reyes" required autocomplete="name">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="my-email">Correo</label>
+        <div class="field__control">
+          <span class="ms">mail</span>
+          <input id="my-email" type="email" value="valentina@correo.cl" required autocomplete="email">
+        </div>
+      </div>
+
+      <hr class="divider">
+      <div class="section-label" style="margin-bottom:-8px">Cambiar contraseña (opcional)</div>
+
+      <div class="field">
+        <label class="field__label" for="current-password">Contraseña actual</label>
+        <div class="field__control">
+          <span class="ms">lock</span>
+          <input id="current-password" data-password-input type="password" placeholder="••••••••" autocomplete="current-password">
+          <button type="button" data-password-toggle class="ms" aria-label="Mostrar contraseña">visibility</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="new-password">Nueva contraseña</label>
+        <div class="field__control">
+          <span class="ms">lock</span>
+          <input id="new-password" data-password-input type="password" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password">
+          <button type="button" data-password-toggle class="ms" aria-label="Mostrar contraseña">visibility</button>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-auto">
+        <span class="ms" style="font-size:19px">check</span>Guardar cambios
+      </button>
+    </form>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editar a Lucas — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="edit-baby">
+<div class="app">
+  <div class="topbar">
+    <a href="profile.html" class="ms topbar__icon">arrow_back_ios_new</a>
+    <div class="topbar__title">Editar a Lucas</div>
+  </div>
+
+  <div class="page">
+    <form class="field" style="gap:16px" onsubmit="event.preventDefault(); window.location.href='profile.html';">
+      <div class="field">
+        <label class="field__label" for="baby-name">Nombre del bebé</label>
+        <div class="field__control">
+          <span class="ms">child_care</span>
+          <input id="baby-name" type="text" value="Lucas" required autocomplete="off">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="baby-dob">Fecha de nacimiento</label>
+        <div class="field__control">
+          <span class="ms">calendar_month</span>
+          <input id="baby-dob" type="date" value="2026-06-24" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="baby-weeks">Semanas de gestación al nacer</label>
+        <div class="field__control">
+          <span class="ms">monitor_heart</span>
+          <input id="baby-weeks" type="number" min="22" max="42" value="35" required>
+        </div>
+        <div class="field__hint">Si nació antes de las 37 semanas, usamos esto para calcular su edad corregida.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-auto">
+        <span class="ms" style="font-size:19px">check</span>Guardar cambios
+      </button>
+    </form>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

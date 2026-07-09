@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registrar controles de hoy — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="log-measurement">
+<div class="app">
+  <div class="topbar">
+    <a href="dashboard.html" class="ms topbar__icon">arrow_back_ios_new</a>
+    <div class="topbar__title">Registrar controles de hoy</div>
+  </div>
+
+  <div class="page">
+    <p class="subhead">Registra lo que puedas hoy — no es necesario completar todo.</p>
+
+    <form class="field" style="gap:16px" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+      <div class="field">
+        <label class="field__label" for="weight">Peso de Lucas (kg)</label>
+        <div class="field__control">
+          <span class="ms">monitor_weight</span>
+          <input id="weight" type="number" step="0.01" min="0" placeholder="3,20" inputmode="decimal">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="feeds">Tomas de hoy</label>
+        <div class="field__control">
+          <span class="ms">water_drop</span>
+          <input id="feeds" type="number" min="0" placeholder="8">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="sleep">Horas de sueño</label>
+        <div class="field__control">
+          <span class="ms">bedtime</span>
+          <input id="sleep" type="number" step="0.5" min="0" placeholder="15">
+        </div>
+      </div>
+
+      <div class="alert alert--celeste">
+        <span class="ms">lightbulb</span>
+        <div>Estos datos ayudan a tu asistente a darte mejores recomendaciones y a detectar señales de alerta a tiempo.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-auto">
+        <span class="ms" style="font-size:19px">check</span>Guardar registro
+      </button>
+    </form>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

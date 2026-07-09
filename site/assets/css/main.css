@@ -416,9 +416,50 @@ input, textarea { font-family: inherit; }
   border: 1.5px solid var(--border);
   background: var(--card);
   flex: none;
+  cursor: pointer;
 }
 
 .checkbox.is-checked { background: var(--p); border-color: var(--p); }
+
+/* ---------- Consentimiento (datos sensibles) ---------- */
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink2);
+}
+
+.consent .checkbox { margin-top: 2px; }
+.consent__text { flex: 1; }
+
+.consent--sensitive {
+  background: var(--tint);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.form-error {
+  font-size: 12.5px;
+  color: var(--coraltx);
+  margin-top: -6px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--p);
+}
+
+.field__hint {
+  font-size: 12px;
+  color: var(--ink2);
+  margin-top: -3px;
+}
 
 /* ---------- Toggle switch ---------- */
 

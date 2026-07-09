@@ -25,6 +25,10 @@ Todo lo listado abajo existe hoy **solo como maqueta estática en HTML/Tailwind*
 | Panel de bienestar del cuidador | Maqueta HTML lista | Métricas resumen, tendencia semanal de ánimo, insight proactivo, acceso a red de apoyo |
 | Privacidad y datos de salud | Implementada (`site/privacy.html`) | Qué datos se tratan, por qué son "datos sensibles", derechos ARSOPB, notificación de brechas y contacto del DPO — alineada con la Ley 21.719 (vigente 1 dic 2026). Contiene nota visible de que debe validarla un asesor legal antes de producción |
 | Ayuda y contacto | Implementada (`site/help.html`) | Canales de soporte, acceso directo a la red de contención y FAQ sobre alcance del asistente, urgencias y derechos sobre los datos |
+| Crear cuenta | Implementada (`site/register.html`) | Formulario de registro con consentimiento explícito y separado para datos sensibles (no basta con aceptar términos generales) — ver nota de Ley 21.719 en `site/README.md` |
+| Registrar/editar al bebé | Implementada (`site/register-baby.html`, `site/edit-baby.html`) | Onboarding tras crear cuenta y edición posterior desde Perfil: nombre, fecha de nacimiento, semanas de gestación (modelo `Newborn`) |
+| Editar mi perfil | Implementada (`site/edit-profile.html`) | Editar los datos de cuenta del cuidador (nombre, correo, contraseña) |
+| Registrar controles diarios | Implementada (`site/log-measurement.html`) | Carga rápida de peso, tomas y horas de sueño, enlazada desde la alerta "registra el peso de hoy" del Dashboard |
 
 ## Vista modificada — detalle
 
@@ -46,4 +50,4 @@ El mockup importado invertía los roles de celeste/menta respecto de la versión
 
 ## Implementación estática (HTML/CSS/JS)
 
-Las 15 pantallas ya están implementadas como sitio estático independiente (sin dependencias de build) en `site/`, listo para servir tal cual o para traducir a Blade en la Fase 2. Incluye las dos vistas de Perfil que en el mockup original eran solo enlaces sin destino (`privacy.html`, `help.html`). Ver `site/README.md` para el detalle de páginas y componentes JS.
+Las pantallas ya están implementadas como sitio estático independiente (sin dependencias de build) en `site/` (19 páginas en total), listo para servir tal cual o para traducir a Blade en la Fase 2. Incluye las vistas que en el mockup original eran solo enlaces sin destino: "Privacidad y datos de salud", "Ayuda y contacto", "Crear cuenta", "Editar" (bebé y perfil), y "Registrar controles diarios". Ver `site/README.md` para el detalle de páginas y componentes JS.

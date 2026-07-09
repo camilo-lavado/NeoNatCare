@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initMoodLog();
   initChipSelectors();
   initScreening();
+  initCheckboxes();
+  initConsentForms();
 });
 
 /* Resalta el ítem activo del nav inferior según data-page en <body> */
@@ -19,15 +21,59 @@ function initBottomNav() {
   });
 }
 
-/* Login: mostrar/ocultar contraseña */
+/* Login / Registro: mostrar/ocultar contraseña (soporta varios campos por página) */
 function initPasswordToggle() {
-  const toggle = document.querySelector("[data-password-toggle]");
-  if (!toggle) return;
-  const input = document.querySelector("[data-password-input]");
-  toggle.addEventListener("click", () => {
-    const isText = input.type === "text";
-    input.type = isText ? "password" : "text";
-    toggle.textContent = isText ? "visibility" : "visibility_off";
+  document.querySelectorAll("[data-password-toggle]").forEach((toggle) => {
+    const input = toggle.closest(".field__control")?.querySelector("[data-password-input]");
+    if (!input) return;
+    toggle.addEventListener("click", () => {
+      const isText = input.type === "text";
+      input.type = isText ? "password" : "text";
+      toggle.textContent = isText ? "visibility" : "visibility_off";
+    });
+  });
+}
+
+/* Checkboxes genéricos (recordarme, aceptar términos, consentimiento de datos sensibles) */
+function initCheckboxes() {
+  document.querySelectorAll("[data-checkbox]").forEach((box) => {
+    box.setAttribute("role", "checkbox");
+    box.setAttribute("tabindex", "0");
+    box.setAttribute("aria-checked", box.classList.contains("is-checked") ? "true" : "false");
+    const toggle = () => {
+      box.classList.toggle("is-checked");
+      box.setAttribute("aria-checked", box.classList.contains("is-checked") ? "true" : "false");
+    };
+    box.addEventListener("click", toggle);
+    box.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+}
+
+/* Formularios con consentimiento explícito de datos sensibles (Ley 21.719):
+   no dejan avanzar hasta que se marquen los checkboxes requeridos. La
+   navegación de éxito vive acá (no en un onsubmit inline) para que ningún
+   otro handler pueda saltarse la validación. */
+function initConsentForms() {
+  document.querySelectorAll("[data-consent-form]").forEach((form) => {
+    const requiredBoxes = form.querySelectorAll("[data-checkbox][data-required]");
+    const errorEl = form.querySelector("[data-consent-error]");
+    const redirect = form.dataset.redirect;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const allChecked = [...requiredBoxes].every((box) => box.classList.contains("is-checked"));
+      if (!allChecked) {
+        if (errorEl) errorEl.style.display = "block";
+        return;
+      }
+      if (errorEl) errorEl.style.display = "none";
+      if (redirect) window.location.href = redirect;
+    });
   });
 }
 
