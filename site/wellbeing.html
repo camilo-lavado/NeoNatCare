@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tu bienestar — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="wellbeing">
+<div class="app">
+  <div class="page page--with-nav">
+    <h1 style="font:700 22px/1.2 var(--hfont);color:var(--ink);margin:0">Tu bienestar</h1>
+
+    <div class="metric-row">
+      <div class="metric-tile"><span class="ms" style="color:var(--sec600)">bedtime</span><div class="metric-tile__value">5,4h</div><div class="metric-tile__label">Sueño prom.</div></div>
+      <div class="metric-tile"><span class="ms" style="color:var(--amber)">psychology</span><div class="metric-tile__value">Moderada</div><div class="metric-tile__label">Ansiedad</div></div>
+      <div class="metric-tile"><span class="ms" style="color:var(--sec600)">sentiment_satisfied</span><div class="metric-tile__value">Bien</div><div class="metric-tile__label">Ánimo</div></div>
+    </div>
+
+    <div>
+      <div class="field__label" style="margin-bottom:10px">Ánimo esta semana</div>
+      <div class="bar-chart" style="height:130px">
+        <div class="bar-chart__col"><div class="bar-chart__bar" style="height:52px"></div><span class="bar-chart__label">L</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar" style="height:64px"></div><span class="bar-chart__label">M</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar bar-chart__bar--warn" style="height:40px"></div><span class="bar-chart__label">M</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar bar-chart__bar--warn" style="height:34px"></div><span class="bar-chart__label">J</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar" style="height:70px"></div><span class="bar-chart__label">V</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar bar-chart__bar--peak" style="height:78px"></div><span class="bar-chart__label">S</span></div>
+        <div class="bar-chart__col"><div class="bar-chart__bar bar-chart__bar--peak" style="height:82px"></div><span class="bar-chart__label bar-chart__label--active">D</span></div>
+      </div>
+    </div>
+
+    <div class="card--sec-tint" style="border-radius:20px;padding:16px">
+      <div class="flex-row"><span class="ms" style="font-size:19px;color:var(--sec600)">lightbulb</span><div style="font-size:13px;font-weight:700;color:var(--sec600)">Notamos un patrón</div></div>
+      <p style="font-size:14px;line-height:1.5;color:var(--sec600);margin:8px 0 0">Tu ánimo suele bajar los martes y miércoles en la noche. ¿Quieres programar un recordatorio para pedir ayuda esos días?</p>
+    </div>
+
+    <div>
+      <div class="field__label" style="margin-bottom:10px">Red de apoyo</div>
+      <a href="urgent-caregiver.html" style="background:var(--coralbg);border-radius:20px;padding:18px;display:flex;align-items:center;gap:14px">
+        <span class="ms" style="width:44px;height:44px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--coraltx);flex:none">volunteer_activism</span>
+        <div class="flex-1">
+          <div style="font-size:14.5px;font-weight:700;color:var(--coraltx)">Líneas de contención emocional</div>
+          <div style="font-size:12.5px;color:var(--coraltx);margin-top:2px">Salud Responde · 600 360 7777, disponible 24/7</div>
+        </div>
+        <span class="ms" style="font-size:20px;color:var(--coraltx)">chevron_right</span>
+      </a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="bottom-nav__item" data-nav="dashboard" href="dashboard.html"><span class="ms">home</span><span>Inicio</span></a>
+    <a class="bottom-nav__item" data-nav="wellbeing" href="wellbeing.html"><span class="ms">favorite</span><span>Bienestar</span></a>
+    <a class="bottom-nav__item" data-nav="chat" href="chat.html"><span class="ms">forum</span><span>Chat</span></a>
+    <a class="bottom-nav__item" data-nav="profile" href="profile.html"><span class="ms">person</span><span>Perfil</span></a>
+  </nav>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

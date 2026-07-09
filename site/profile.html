@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perfil — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="profile">
+<div class="app">
+  <div class="page page--with-nav">
+    <h1 style="font:700 23px/1.1 var(--hfont);color:var(--ink);margin:0">Perfil</h1>
+
+    <div class="card--tint" style="border-radius:24px;padding:20px;display:flex;align-items:center;gap:15px">
+      <div class="placeholder" style="width:60px;height:60px;border-radius:999px;font-size:9px">foto</div>
+      <div class="flex-1">
+        <div style="font:700 19px/1.1 var(--hfont);color:var(--ink)">Valentina Reyes</div>
+        <div style="font-size:13.5px;color:var(--ink2);margin-top:3px">valentina@correo.cl</div>
+        <span class="chip" style="margin-top:7px;background:#fff">Madre de Lucas</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Bebé</div>
+      <ul class="card list-clean" style="overflow:hidden">
+        <li class="list-tile">
+          <span class="icon-tile ms">child_care</span>
+          <div class="flex-1"><div class="list-tile__title">Lucas</div><div class="list-tile__subtitle">Nacido el 24 jun 2026 · 14 días</div></div>
+          <a href="#" style="font-size:12.5px;font-weight:700;color:var(--p)">Editar</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="section-label">Bienestar</div>
+      <ul class="card list-clean" style="overflow:hidden">
+        <li class="list-tile">
+          <span class="icon-tile icon-tile--sec ms">favorite</span>
+          <span class="flex-1" style="font-size:14.5px;color:var(--ink)">Recordatorio diario de bitácora</span>
+          <button type="button" class="switch is-on" aria-label="Activar recordatorio"><span class="switch__knob"></span></button>
+        </li>
+        <hr class="divider">
+        <li class="list-tile">
+          <span class="icon-tile icon-tile--sec ms">volunteer_activism</span>
+          <a class="flex-1" href="wellbeing.html" style="font-size:14.5px;color:var(--ink)">Red de apoyo y contención</a>
+          <span class="ms" style="font-size:19px;color:var(--ink2)">chevron_right</span>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="section-label">Cuenta</div>
+      <ul class="card list-clean" style="overflow:hidden">
+        <li class="list-tile">
+          <span class="icon-tile ms">verified_user</span>
+          <a class="flex-1" href="#" style="font-size:14.5px;color:var(--ink)">Privacidad y datos de salud</a>
+          <span class="ms" style="font-size:19px;color:var(--ink2)">chevron_right</span>
+        </li>
+        <hr class="divider">
+        <li class="list-tile">
+          <span class="icon-tile ms">help</span>
+          <a class="flex-1" href="#" style="font-size:14.5px;color:var(--ink)">Ayuda y contacto</a>
+          <span class="ms" style="font-size:19px;color:var(--ink2)">chevron_right</span>
+        </li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="btn btn-secondary" style="border-color:#F0D6CC;color:var(--coraltx)">
+      <span class="ms" style="font-size:18px">logout</span>Cerrar sesión
+    </a>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="bottom-nav__item" data-nav="dashboard" href="dashboard.html"><span class="ms">home</span><span>Inicio</span></a>
+    <a class="bottom-nav__item" data-nav="wellbeing" href="wellbeing.html"><span class="ms">favorite</span><span>Bienestar</span></a>
+    <a class="bottom-nav__item" data-nav="chat" href="chat.html"><span class="ms">forum</span><span>Chat</span></a>
+    <a class="bottom-nav__item" data-nav="profile" href="profile.html"><span class="ms">person</span><span>Perfil</span></a>
+  </nav>
+</div>
+<script src="assets/js/main.js"></script>
+<script>
+  document.querySelector('.switch').addEventListener('click', function () {
+    this.classList.toggle('is-on');
+  });
+</script>
+</body>
+</html>

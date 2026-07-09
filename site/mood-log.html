@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Cómo va tu día? — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="mood-log">
+<div class="app">
+  <div class="page">
+    <div class="flex-row">
+      <a href="dashboard.html" class="ms" style="font-size:22px;color:var(--ink2)">arrow_back_ios_new</a>
+      <h1 class="flex-1" style="font:700 19px/1.2 var(--hfont);color:var(--ink);margin:0">¿Cómo va tu día?</h1>
+    </div>
+    <p class="subhead">Solo toma 30 segundos. Nadie más lo ve, es para ti.</p>
+
+    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';" style="display:flex;flex-direction:column;gap:20px">
+      <div>
+        <div class="field__label" style="margin-bottom:10px">¿Cuánto dormiste?</div>
+        <div class="chip-row" data-chip-group>
+          <button type="button" class="chip-option">&lt; 4h</button>
+          <button type="button" class="chip-option is-selected">4–6h</button>
+          <button type="button" class="chip-option">6–8h</button>
+          <button type="button" class="chip-option">+8h</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="field__label" style="margin-bottom:10px">¿Cómo está tu ánimo?</div>
+        <div class="mood-grid">
+          <button type="button" class="mood-option" data-mood-option>
+            <span class="mood-option__face">😩</span><span class="mood-option__label">Agotada</span>
+          </button>
+          <button type="button" class="mood-option" data-mood-option>
+            <span class="mood-option__face">😔</span><span class="mood-option__label">Baja</span>
+          </button>
+          <button type="button" class="mood-option is-selected" data-mood-option>
+            <span class="mood-option__face">😐</span><span class="mood-option__label">Normal</span>
+          </button>
+          <button type="button" class="mood-option" data-mood-option>
+            <span class="mood-option__face">🙂</span><span class="mood-option__label">Bien</span>
+          </button>
+          <button type="button" class="mood-option" data-mood-option>
+            <span class="mood-option__face">😄</span><span class="mood-option__label">Con energía</span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div class="slider-row"><span>Nivel de ansiedad</span><span style="color:var(--sec600)">Moderado</span></div>
+        <div class="range-track">
+          <input type="range" min="0" max="100" value="55" aria-label="Nivel de ansiedad">
+        </div>
+        <div class="range-scale"><span>Tranquila</span><span>Muy ansiosa</span></div>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="note">¿Quieres contarme algo más? <span style="font-weight:600;color:var(--ink2)">(opcional)</span></label>
+        <textarea id="note" class="field__textarea" placeholder="Hoy Lucas lloró mucho en la tarde y me sentí sobrepasada…"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-auto">
+        <span class="ms" style="font-size:19px">check</span>Listo por hoy
+      </button>
+    </form>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asistente CuidarIA — Chat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="chat">
+<div class="app" style="min-height:100vh">
+  <div class="topbar">
+    <a href="dashboard.html" class="ms topbar__icon">arrow_back_ios_new</a>
+    <div class="topbar__title">Asistente CuidarIA</div>
+  </div>
+
+  <div style="padding:12px 22px 0">
+    <div class="segmented segmented--celeste" data-chat-toggle>
+      <button type="button" class="segmented__option is-active" data-mode="baby">
+        <span class="ms" style="font-size:16px">child_care</span>Sobre Lucas
+      </button>
+      <button type="button" class="segmented__option" data-mode="self">
+        <span class="ms" style="font-size:16px">favorite</span>Para mí
+      </button>
+    </div>
+  </div>
+
+  <div class="chat-banner chat-banner--celeste is-active" data-mode-panel="baby">
+    <span class="ms" style="font-size:14px">verified_user</span>Respuestas basadas en MINSAL · OMS · UNICEF
+  </div>
+  <div class="chat-banner chat-banner--sec" data-mode-panel="self">
+    <span class="ms" style="font-size:14px">spa</span>Espacio de contención, sin juicio
+  </div>
+
+  <div class="chat-thread is-active" data-mode-panel="baby">
+    <div class="bubble bubble--in">Hola Valentina, soy tu asistente. ¿En qué te ayudo con Lucas hoy?</div>
+    <div class="bubble bubble--out bubble--celeste">Mi bebé tiene 37,8 °C, ¿debo preocuparme?</div>
+    <div class="bubble bubble--in bubble--rich">
+      Una temperatura de <b>37,8 °C axilar</b> está en el límite. En recién nacidos se considera fiebre desde <b>38 °C</b>. Por ahora te sugiero:
+      <div class="bubble__list">· No abrigarlo en exceso<br>· Ofrecer pecho más seguido<br>· Volver a medir en 30 min</div>
+      <div class="alert alert--amber" style="margin-top:12px">
+        <span class="ms">warning</span>
+        <div><b>Signo de alerta:</b> si supera 38 °C o rechaza el alimento, contacta a tu centro de salud.</div>
+      </div>
+    </div>
+    <div class="bubble__sources" style="margin-left:2px">
+      <span class="badge-source"><span class="ms" style="font-size:13px">verified</span>MINSAL · Guía RN 2023</span>
+      <span class="badge-source"><span class="ms" style="font-size:13px">verified</span>OMS · Fiebre neonatal</span>
+    </div>
+    <div class="typing">
+      <span class="typing__dots"><span></span><span></span><span></span></span>
+      Consultando guías médicas oficiales…
+    </div>
+  </div>
+
+  <div class="chat-thread" data-mode-panel="self">
+    <div class="bubble bubble--in">Hola Valentina. Este espacio es para ti. ¿Cómo te has sentido hoy?</div>
+    <div class="bubble bubble--out bubble--sec">Siento que no duermo nada y a veces me dan ganas de llorar sin razón</div>
+    <div class="bubble bubble--in bubble--rich">
+      Gracias por contármelo, no estás fallando en nada — lo que describes es muy común en el posparto y tiene nombre y apoyo. Unas ideas para hoy:
+      <div class="bubble__list">· Duerme cuando el bebé duerma, aunque sea 20 min<br>· Pide a alguien que te acompañe esta noche<br>· No tienes que sostenerlo todo sola</div>
+      <div class="alert alert--sec" style="margin-top:12px;background:var(--sec100);border:none">
+        <span class="ms">favorite</span>
+        <div>¿Quieres hacer un check-in breve de cómo te sientes? Toma 30 segundos.</div>
+      </div>
+    </div>
+    <span class="chip chip--sec" style="align-self:flex-start"><span class="ms" style="font-size:13px">favorite</span>Apoyo psicológico perinatal · uso general</span>
+  </div>
+
+  <div class="chat-composer">
+    <div class="chat-composer__input is-active" data-mode-only="baby">Escribe tu consulta…</div>
+    <div class="chat-composer__input" data-mode-only="self">Cuéntame cómo te sientes…</div>
+    <button type="button" class="chat-composer__send chat-composer__send--celeste ms is-active" data-mode-only="baby">send</button>
+    <button type="button" class="chat-composer__send chat-composer__send--sec ms" data-mode-only="self">send</button>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

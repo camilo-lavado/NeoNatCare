@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="dashboard">
+<div class="app">
+  <div class="page page--with-nav">
+    <div class="flex-row" style="justify-content:space-between">
+      <div>
+        <p class="subhead" style="font-size:15px">Buenas noches</p>
+        <h1 class="headline" style="font-size:24px">Valentina</h1>
+      </div>
+      <a href="profile.html" class="avatar-circle" style="width:46px;height:46px">V</a>
+    </div>
+
+    <div class="card--tint card--hero">
+      <div class="flex-row">
+        <div style="position:relative;width:70px;height:70px;flex:none">
+          <svg width="70" height="70" viewBox="0 0 70 70" style="position:absolute;inset:0">
+            <circle cx="35" cy="35" r="30" fill="none" stroke="#fff" stroke-width="6"/>
+            <circle cx="35" cy="35" r="30" fill="none" stroke="var(--p)" stroke-width="6" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="140" transform="rotate(-90 35 35)"/>
+          </svg>
+          <div class="placeholder" style="position:absolute;inset:11px;border-radius:999px;font-size:8px">foto<br>bebé</div>
+        </div>
+        <div class="flex-1">
+          <div style="font:700 20px/1 var(--hfont);color:var(--ink)">Lucas</div>
+          <div style="font-size:14px;color:var(--ink2);margin-top:3px">14 días de vida</div>
+          <span class="chip" style="margin-top:7px;background:#fff">Edad corregida: 6 días</span>
+        </div>
+      </div>
+      <div class="metric-row" style="margin-top:14px">
+        <div class="metric-tile"><span class="ms">monitor_weight</span><div class="metric-tile__value">3,2<span style="font-size:10px;color:var(--ink2)">kg</span></div><div class="metric-tile__label">Peso</div></div>
+        <div class="metric-tile"><span class="ms">water_drop</span><div class="metric-tile__value">8<span style="font-size:10px;color:var(--ink2)">/día</span></div><div class="metric-tile__label">Tomas</div></div>
+        <div class="metric-tile"><span class="ms">bedtime</span><div class="metric-tile__value">15<span style="font-size:10px;color:var(--ink2)">h</span></div><div class="metric-tile__label">Sueño</div></div>
+      </div>
+    </div>
+
+    <a href="mood-log.html" class="card--sec-tint" style="border-radius:22px;padding:15px 16px;display:flex;align-items:center;gap:13px">
+      <span class="ms" style="font-size:24px;color:var(--sec600)">favorite</span>
+      <div class="flex-1">
+        <div style="font-size:15px;font-weight:700;color:var(--sec600)">¿Y cómo estás tú hoy?</div>
+        <div style="font-size:12.5px;color:var(--sec600)">Check-in de 30 segundos</div>
+      </div>
+      <span class="ms" style="font-size:20px;color:var(--sec600)">chevron_right</span>
+    </a>
+
+    <div>
+      <div class="flex-row" style="justify-content:space-between;margin-bottom:10px">
+        <div style="font:700 16px/1 var(--hfont);color:var(--ink)">Próximos hitos</div>
+        <span style="font-size:13px;color:var(--p);font-weight:700">Ver todo</span>
+      </div>
+      <ul class="card list-clean" style="padding:6px 4px">
+        <li class="list-tile">
+          <span class="icon-tile ms">stethoscope</span>
+          <div class="flex-1"><div class="list-tile__title">Control niño sano</div><div class="list-tile__subtitle">Mañana · 10:00</div></div>
+        </li>
+        <hr class="divider" style="margin:0 13px">
+        <li class="list-tile">
+          <span class="icon-tile ms">vaccines</span>
+          <div class="flex-1"><div class="list-tile__title">Vacuna BCG</div><div class="list-tile__subtitle">En 3 días</div></div>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <div style="font:700 16px/1 var(--hfont);color:var(--ink);margin-bottom:10px">Últimas alertas</div>
+      <div class="alert alert--amber">
+        <span class="ms">event</span>
+        <div class="flex-1"><b>Control de peso pendiente</b> — registra el peso de hoy</div>
+      </div>
+      <div class="alert alert--celeste" style="margin-top:9px">
+        <span class="ms">check_circle</span>
+        <div class="flex-1">Signos vitales dentro de lo normal</div>
+      </div>
+    </div>
+
+    <a href="chat.html" class="btn btn-primary" style="margin-top:4px">
+      <span class="ms" style="font-size:19px">chat_bubble</span>
+      Consultar con el asistente
+    </a>
+  </div>
+
+  <nav class="bottom-nav">
+    <a class="bottom-nav__item" data-nav="dashboard" href="dashboard.html"><span class="ms">home</span><span>Inicio</span></a>
+    <a class="bottom-nav__item" data-nav="wellbeing" href="wellbeing.html"><span class="ms">favorite</span><span>Bienestar</span></a>
+    <a class="bottom-nav__item" data-nav="chat" href="chat.html"><span class="ms">forum</span><span>Chat</span></a>
+    <a class="bottom-nav__item" data-nav="profile" href="profile.html"><span class="ms">person</span><span>Perfil</span></a>
+  </nav>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

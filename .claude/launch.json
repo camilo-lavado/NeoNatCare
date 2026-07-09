@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mockups-static-server",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "mockups", "-p", "4173", "-c-1"],
+      "port": 4173
+    },
+    {
+      "name": "site-static-server",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "site", "-p", "4174", "-c-1"],
+      "port": 4174
+    }
+  ]
+}

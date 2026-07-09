@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tamizaje breve — CuidarIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="screening">
+<div class="app">
+  <div class="page" data-screening>
+    <div class="flex-row">
+      <button type="button" class="ms" data-question-back style="font-size:22px;color:var(--ink2);background:none;border:none">arrow_back_ios_new</button>
+      <div class="progress"><div class="progress__fill" data-progress-fill></div></div>
+    </div>
+
+    <div class="field__label" data-progress-label style="color:var(--ink2)"></div>
+
+    <h1 class="screening-question" data-question-text></h1>
+
+    <div data-option-list class="option-list"></div>
+
+    <div class="alert alert--sec mt-auto">
+      <span class="ms">info</span>
+      <div>Esto es un apoyo, no un diagnóstico. Tus respuestas son privadas.</div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
