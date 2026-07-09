@@ -23,6 +23,8 @@ Todo lo listado abajo existe hoy **solo como maqueta estática en HTML/Tailwind*
 | Bitácora emocional diaria | Maqueta HTML lista | Check-in de menos de 30 segundos: sueño, ánimo (única excepción a la regla sin-emoji), nivel de ansiedad, nota opcional |
 | Tamizaje breve (Screening) | Maqueta HTML lista | Formato una pregunta a la vez, barra de progreso, disclaimer de "no es un diagnóstico", vista de resultado histórico |
 | Panel de bienestar del cuidador | Maqueta HTML lista | Métricas resumen, tendencia semanal de ánimo, insight proactivo, acceso a red de apoyo |
+| Privacidad y datos de salud | Implementada (`site/privacy.html`) | Qué datos se tratan, por qué son "datos sensibles", derechos ARSOPB, notificación de brechas y contacto del DPO — alineada con la Ley 21.719 (vigente 1 dic 2026). Contiene nota visible de que debe validarla un asesor legal antes de producción |
+| Ayuda y contacto | Implementada (`site/help.html`) | Canales de soporte, acceso directo a la red de contención y FAQ sobre alcance del asistente, urgencias y derechos sobre los datos |
 
 ## Vista modificada — detalle
 
@@ -44,4 +46,4 @@ El mockup importado invertía los roles de celeste/menta respecto de la versión
 
 ## Implementación estática (HTML/CSS/JS)
 
-Las 13 pantallas ya están implementadas como sitio estático independiente (sin dependencias de build) en `site/`, listo para servir tal cual o para traducir a Blade en la Fase 2. Ver `site/README.md` para el detalle de páginas y componentes JS.
+Las 15 pantallas ya están implementadas como sitio estático independiente (sin dependencias de build) en `site/`, listo para servir tal cual o para traducir a Blade en la Fase 2. Incluye las dos vistas de Perfil que en el mockup original eran solo enlaces sin destino (`privacy.html`, `help.html`). Ver `site/README.md` para el detalle de páginas y componentes JS.

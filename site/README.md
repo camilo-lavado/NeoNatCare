@@ -1,6 +1,6 @@
 # CuidarIA — sitio estático (Fase 1: HTML/CSS/JS)
 
-Implementación real (no maqueta de canvas) de las 13 pantallas descritas en `docs/VIEWS.md`, sin dependencias de build — se abre directo en el navegador o se sirve con cualquier servidor estático. Es la base que se traducirá a vistas Blade en la Fase 2 (ver `CLAUDE.md` raíz: todavía no existe el proyecto Laravel).
+Implementación real (no maqueta de canvas) de las 15 pantallas descritas en `docs/VIEWS.md`, sin dependencias de build — se abre directo en el navegador o se sirve con cualquier servidor estático. Es la base que se traducirá a vistas Blade en la Fase 2 (ver `CLAUDE.md` raíz: todavía no existe el proyecto Laravel).
 
 ## Páginas
 
@@ -17,7 +17,13 @@ Implementación real (no maqueta de canvas) de las 13 pantallas descritas en `do
 | `urgent-baby.html` | Modal de urgencia médica (bebé) |
 | `urgent-caregiver.html` | Modal de urgencia de salud mental (cuidadora) |
 | `profile.html` | Perfil |
+| `privacy.html` | Privacidad y datos de salud — alineada con la Ley 21.719 (ver nota legal abajo) |
+| `help.html` | Ayuda y contacto — canales de soporte + FAQ (`<details>` nativo) |
 | `qr.html` | Lámina QR (material impreso/hospital) |
+
+## Nota legal — `privacy.html`
+
+Refleja la **Ley 21.719 de Protección de Datos Personales de Chile**, vigente en plenitud desde el **1 de diciembre de 2026**: datos de salud/bienestar emocional como categoría de "datos sensibles" con protección reforzada, consentimiento explícito/específico/revocable, los derechos **ARSOPB** (Acceso, Rectificación, Supresión, Oposición, Portabilidad, Bloqueo temporal), notificación de brechas a la Agencia de Protección de Datos Personales dentro de 72 horas, y un contacto de Delegado de Protección de Datos. Es contenido de producto — la página incluye una nota visible de que debe ser revisada por un asesor legal antes de producción; no reemplaza asesoría legal real.
 
 ## Estructura compartida
 

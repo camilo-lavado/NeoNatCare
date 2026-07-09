@@ -10,7 +10,7 @@ Ver [`CLAUDE.md`](CLAUDE.md) para el contexto completo del proyecto y las conven
 
 - [`docs/`](docs) — documentación de producto: arquitectura, sistema de diseño, roadmap, inventario de vistas.
 - [`mockups/`](mockups) — mockup de diseño importado desde claude.ai/design (referencia visual, una sola página con las 13 pantallas).
-- [`site/`](site) — implementación real en HTML/CSS/JS estático de esas 13 pantallas, sin dependencias de build. Es la base que se traduce a vistas Blade en la Fase 2.
+- [`site/`](site) — implementación real en HTML/CSS/JS estático de esas 13 pantallas más "Privacidad y datos de salud" y "Ayuda y contacto" (que en el mockup eran enlaces sin destino), sin dependencias de build. Es la base que se traduce a vistas Blade en la Fase 2.
 
 ## Fase 2 (pendiente)
 

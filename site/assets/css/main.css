@@ -988,3 +988,84 @@ input, textarea { font-family: inherit; }
 
 .list-tile__title { font-size: 14.5px; font-weight: 700; color: var(--ink); }
 .list-tile__subtitle { font-size: 12.5px; color: var(--ink2); margin-top: 2px; }
+
+/* ---------- Legal / help content ---------- */
+
+.legal-note {
+  background: var(--tint);
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink2);
+}
+
+.rights-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rights-grid__item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.rights-grid__letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--acc);
+  color: var(--p);
+  font: 700 13px/1 var(--hfont);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.faq + .faq { margin-top: 10px; }
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 15px 16px;
+  font: 700 14.5px/1.4 var(--bfont);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary .ms {
+  margin-left: auto;
+  color: var(--ink2);
+  font-size: 20px;
+  transition: transform .15s ease;
+}
+
+.faq[open] summary .ms { transform: rotate(180deg); }
+
+.faq__body {
+  padding: 0 16px 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink2);
+}
+
+.contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+}
