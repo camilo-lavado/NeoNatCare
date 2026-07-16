@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-heading: 'Quicksand', 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
+
+    /* Celeste — marca / pediátrico (docs/DESIGN-SYSTEM.md) */
+    --color-celeste-bg: #F2FAFB;
+    --color-celeste-tint: #E4F4F5;
+    --color-celeste-accent: #CDE9EC;
+    --color-celeste-accent-border: #B7DEE2;
+    --color-celeste-soft: #A9DEE6;
+    --color-celeste-border: #DCEDEE;
+    --color-celeste: #3B9FB4;
+
+    /* Menta — bienestar del cuidador / modo "para mí" */
+    --color-menta-50: #EAF7F1;
+    --color-menta-100: #D8EFE3;
+    --color-menta-soft: #BFE7D7;
+    --color-menta: #7FCBB0;
+    --color-menta-2: #5FAF95;
+    --color-menta-600: #2F6B57;
+
+    /* Ámbar — advertencia leve / disclaimer, nunca urgencia */
+    --color-amber-bg: #FCEFD9;
+    --color-amber: #E0A342;
+
+    /* Coral — urgencia real (médica o de salud mental) */
+    --color-coral-bg: #FBE4DD;
+    --color-coral: #E8795E;
+    --color-coral-text: #C2603A;
+
+    /* Neutros */
+    --color-card: #FFFFFF;
+    --color-ink: #26383C;
+    --color-ink-2: #74898C;
+
+    --radius-card: 16px;
+    --radius-hero: 22px;
+    --radius-frame: 40px;
+
+    --shadow-soft: 0 12px 32px rgba(38, 56, 60, .12), 0 2px 8px rgba(38, 56, 60, .06);
+}
+
+@layer base {
+    .ms {
+        font-family: 'Material Symbols Rounded';
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+        vertical-align: middle;
+    }
+
+    @keyframes ncblink {
+        0%, 80%, 100% { opacity: .25; transform: translateY(0); }
+        40% { opacity: 1; transform: translateY(-3px); }
+    }
+}

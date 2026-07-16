@@ -12,7 +12,7 @@ CuidarIA se lee como "cuidaría" (te cuidaría) y encierra "cuidar" + "IA". El n
 
 ## Estado actual del proyecto
 
-Fase de diseño. Existen maquetas HTML/Tailwind estáticas (no funcionales) de todas las vistas — ver `docs/VIEWS.md` para el inventario completo y su estado. Todavía no se ha creado el proyecto Laravel; eso se hará por separado en un entorno local con Laragon. Este repositorio de documentación es el punto de partida para que Claude Code entienda el contexto completo antes de iniciar el desarrollo del backend.
+El proyecto Laravel ya fue scaffoldeado localmente con Laragon, pero sigue siendo el esqueleto por defecto (sin modelos, controladores ni vistas propias de CuidarIA todavía). Existen maquetas HTML/Tailwind estáticas (no funcionales) de todas las vistas — ver `docs/VIEWS.md` para el inventario completo y su estado, y `site/` para la implementación estática completa que sirve de referencia para traducir a Blade. Ver `CLAUDE.md` (raíz) para el detalle de qué existe hoy en el código antes de generar nada nuevo.
 
 ## Documentos de referencia
 
