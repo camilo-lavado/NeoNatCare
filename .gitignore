@@ -26,8 +26,8 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# Guías/contexto para Claude Code y notas de planificación con IA — locales, no se suben
+# Documentación de producto/planificación y contexto para Claude Code — locales, no se suben
 CLAUDE.md
-docs/CLAUDE.md
+/docs
 EVALUACION-U1-NOTAS.md
 /.claude

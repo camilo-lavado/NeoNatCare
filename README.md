@@ -1,10 +1,10 @@
 # CuidarIA
 
-Portal web de acompañamiento neonatal y bienestar del cuidador (0 a 28 días de vida): guías clínicas oficiales para el bebé y contención emocional para quien lo cuida. Ver [`docs/README.md`](docs/README.md) para el pitch de producto completo.
+Portal web de acompañamiento neonatal y bienestar del cuidador (0 a 28 días de vida): guías clínicas oficiales para el bebé y contención emocional para quien lo cuida, ajustando el tono según el estado emocional reciente del cuidador.
 
 ## Estado del proyecto
 
-Backend Laravel 13 (PHP 8.3) con autenticación real (Laravel Breeze) y las 19 pantallas del diseño traducidas a vistas Blade sobre Tailwind CSS v4, con el sistema de diseño "Celeste Menta" (ver [`docs/DESIGN-SYSTEM.md`](docs/DESIGN-SYSTEM.md)). El modelo de datos del bebé y el asistente de IA con RAG dual (ver [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)) todavía no están conectados. El detalle de qué vista está implementada vs. pendiente vive en [`docs/VIEWS.md`](docs/VIEWS.md) y el plan de trabajo en [`docs/ROADMAP.md`](docs/ROADMAP.md).
+Backend Laravel 13 (PHP 8.3) con autenticación real (Laravel Breeze: login/registro/perfil persisten en base de datos) y las 19 pantallas del diseño traducidas a vistas Blade sobre Tailwind CSS v4, con un sistema de diseño propio ("Celeste Menta") implementado como Blade Components reutilizables. Lo que falta: conectar los datos de dominio (bebé, bitácora emocional, tamizaje) a modelos reales, e integrar el asistente de IA.
 
 ## Stack técnico
 
@@ -30,6 +30,5 @@ Abre `http://127.0.0.1:8000` y crea una cuenta en `/register`.
 ## Estructura del repositorio
 
 - [`app/`](app), [`routes/`](routes), [`resources/views/`](resources/views) — el proyecto Laravel.
-- [`docs/`](docs) — documentación de producto: arquitectura, sistema de diseño, roadmap, inventario de vistas.
-- [`mockups/`](mockups) — mockup de diseño original importado (una sola página con las 13 pantallas), referencia visual.
-- [`site/`](site) — implementación estática de referencia (HTML/CSS/JS, sin build) de las 19 pantallas, fuente de verdad visual traducida a Blade en `resources/views/`.
+- [`mockups/`](mockups) — mockup de diseño original importado (una sola página con las 13 pantallas), referencia visual histórica.
+- [`site/`](site) — implementación estática de referencia (HTML/CSS/JS, sin build) de las 19 pantallas, que sirvió de fuente de verdad visual para traducir a Blade.
