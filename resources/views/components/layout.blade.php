@@ -4,6 +4,7 @@
     'withNav' => false,
     'wide' => false,
     'raw' => false,
+    'marketing' => false,
 ])
 
 <!DOCTYPE html>
@@ -23,21 +24,26 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body data-page="{{ $page }}" class="font-sans text-ink antialiased">
-    <div class="app mx-auto min-h-screen bg-celeste-bg flex flex-col relative {{ $wide ? 'max-w-[720px]' : 'max-w-[480px]' }}">
-        {{ $topbar ?? '' }}
+    @if ($marketing)
+        {{-- Página de marketing: ancho completo, sin el "app shell" móvil de 480px --}}
+        {{ $slot }}
+    @else
+        <div class="app mx-auto min-h-screen bg-celeste-bg flex flex-col relative {{ $wide ? 'max-w-[720px]' : 'max-w-[480px]' }}">
+            {{ $topbar ?? '' }}
 
-        @if ($raw)
-            {{ $slot }}
-        @else
-            <div class="flex-1 px-6 pt-5 pb-6 flex flex-col gap-[18px] {{ $withNav ? 'pb-[100px]' : '' }}">
+            @if ($raw)
                 {{ $slot }}
-            </div>
-        @endif
+            @else
+                <div class="flex-1 px-6 pt-5 pb-6 flex flex-col gap-[18px] {{ $withNav ? 'pb-[100px]' : '' }}">
+                    {{ $slot }}
+                </div>
+            @endif
 
-        @if ($withNav)
-            <x-bottom-nav :active="$page" />
-        @endif
-    </div>
+            @if ($withNav)
+                <x-bottom-nav :active="$page" />
+            @endif
+        </div>
+    @endif
 
     @stack('scripts')
 </body>
