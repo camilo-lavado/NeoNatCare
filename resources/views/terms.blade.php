@@ -1,8 +1,10 @@
-<x-layout page="terms" title="Términos y condiciones — CuidarIA">
-    <x-slot:topbar>
-        <x-topbar title="Términos y condiciones" back="javascript:history.back()" />
-    </x-slot:topbar>
+@php
+    $pageKey = 'terms';
+    $pageTitle = 'Términos y condiciones';
+@endphp
+@extends('layouts.legal')
 
+@section('content')
     <x-legal-note>
         Este es un borrador de producto — antes de lanzar a producción debe ser revisado y validado por un asesor legal. No reemplaza asesoría legal real.
     </x-legal-note>
@@ -58,4 +60,4 @@
             Si actualizamos estos términos de forma relevante, te lo notificaremos dentro de la app antes de que entren en vigencia.
         </p>
     </section>
-</x-layout>
+@endsection

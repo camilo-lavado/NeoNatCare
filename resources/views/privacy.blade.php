@@ -1,8 +1,10 @@
-<x-layout page="privacy" title="Privacidad y datos de salud — CuidarIA">
-    <x-slot:topbar>
-        <x-topbar title="Privacidad y datos de salud" back="javascript:history.back()" />
-    </x-slot:topbar>
+@php
+    $pageKey = 'privacy';
+    $pageTitle = 'Privacidad y datos de salud';
+@endphp
+@extends('layouts.legal')
 
+@section('content')
     <x-legal-note>
         Este resumen está alineado con la <b>Ley 21.719 de Protección de Datos Personales</b>, que rige en Chile en plenitud desde el <b>1 de diciembre de 2026</b>. Es un borrador de producto — antes de lanzar a producción debe ser revisado y validado por un asesor legal.
     </x-legal-note>
@@ -74,4 +76,4 @@
     </section>
 
     <x-btn variant="link" href="{{ route('legal.terms') }}">Ver términos y condiciones</x-btn>
-</x-layout>
+@endsection
