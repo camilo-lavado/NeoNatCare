@@ -1,6 +1,6 @@
 <x-layout page="login" title="Ingresar — CuidarIA">
     <div class="flex flex-col items-center gap-3 mt-2">
-        <span class="w-14 h-14 rounded-[18px] bg-celeste"></span>
+        <img src="{{ asset('images/logo-mark.png') }}" alt="" class="w-14 h-14 object-contain">
         <div class="text-center">
             <h1 class="font-heading font-bold text-[26px] leading-[1.2] text-ink">Hola de nuevo</h1>
             <p class="text-base leading-[1.5] text-ink-2 mt-[6px]">Ingresa para seguir tu bitácora y la de tu bebé</p>

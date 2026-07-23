@@ -1,12 +1,13 @@
 <x-layout page="landing" title="CuidarIA — Cuidar a tu bebé también es cuidarte a ti">
     <div class="flex items-center gap-3">
-        <span class="w-[28px] h-[28px] rounded-[9px] bg-celeste"></span>
+        <img src="{{ asset('images/logo-mark.png') }}" alt="" class="w-[28px] h-[28px] object-contain">
         <span class="font-heading font-bold text-lg leading-none text-ink">CuidarIA</span>
     </div>
 
-    <div class="flex items-center justify-center text-center text-[11px] font-mono font-semibold text-ink-2 rounded-[26px]"
-         style="aspect-ratio:1.5;background:repeating-linear-gradient(45deg, var(--color-celeste-accent), var(--color-celeste-accent) 8px, #fff 8px, #fff 16px)">
-        ilustración<br>familia + bebé
+    <div class="flex items-center justify-center rounded-[26px] bg-celeste-tint border border-celeste-border p-4"
+         style="aspect-ratio:1.5">
+        <img src="{{ asset('images/landing-hero.png') }}" alt="Una madre sostiene con calma a su recién nacido en brazos"
+             class="w-full h-full object-contain">
     </div>
 
     <h1 class="font-heading font-bold text-[27px] leading-[1.2] text-ink">Cuidar a tu bebé también es cuidarte a ti</h1>

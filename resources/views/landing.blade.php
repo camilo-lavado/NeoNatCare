@@ -3,7 +3,7 @@
     <header class="border-b border-celeste-border bg-celeste-bg/80 backdrop-blur sticky top-0 z-10">
         <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-[9px] bg-celeste"></span>
+                <img src="{{ asset('images/logo-mark.png') }}" alt="" class="w-8 h-8 object-contain">
                 <span class="font-heading font-bold text-lg text-ink">CuidarIA</span>
             </div>
             <nav class="flex items-center gap-3">
@@ -44,9 +44,9 @@
         </div>
 
         <div class="relative">
-            <div class="aspect-[4/5] max-w-sm mx-auto rounded-[32px] bg-celeste-tint border border-celeste-border flex items-center justify-center text-center text-ink-2 font-mono text-xs p-8"
-                 style="background:repeating-linear-gradient(45deg, var(--color-celeste-accent), var(--color-celeste-accent) 10px, #fff 10px, #fff 20px)">
-                vista previa<br>de la app
+            <div class="aspect-[4/5] max-w-sm mx-auto rounded-[32px] bg-celeste-tint border border-celeste-border flex items-center justify-center p-6">
+                <img src="{{ asset('images/landing-hero.png') }}" alt="Una madre sostiene con calma a su recién nacido en brazos"
+                     class="w-full h-full object-contain">
             </div>
         </div>
     </section>
@@ -121,7 +121,7 @@
     <footer class="bg-celeste-bg">
         <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-[7px] bg-celeste"></span>
+                <img src="{{ asset('images/logo-mark.png') }}" alt="" class="w-6 h-6 object-contain">
                 <span class="font-heading font-bold text-ink">CuidarIA</span>
             </div>
             <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-2">
