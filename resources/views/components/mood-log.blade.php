@@ -18,6 +18,7 @@
 
 <div>
     <div class="text-[13px] font-bold text-ink mb-[10px]">¿Cuánto dormiste?</div>
+    <input type="hidden" name="sleep_hours" value="{{ $selectedSleep }}" data-sleep-hidden>
     <div class="flex gap-2 flex-wrap" data-chip-group>
         @foreach ($sleepOptions as $value => $label)
             @php $isSelected = $value === $selectedSleep; @endphp
@@ -32,6 +33,7 @@
 
 <div>
     <div class="text-[13px] font-bold text-ink mb-[10px]">¿Cómo está tu ánimo?</div>
+    <input type="hidden" name="mood" value="{{ $selectedMood }}" data-mood-hidden>
     <div class="flex justify-between" data-mood-group>
         @foreach ($moodOptions as $value => [$emoji, $label])
             @php $isSelected = $value === $selectedMood; @endphp
@@ -50,7 +52,7 @@
         <span class="text-menta-600" data-anxiety-label>Moderado</span>
     </div>
     <div class="relative h-2 rounded-[9px]" style="background:linear-gradient(90deg, var(--color-menta), var(--color-amber) 55%, var(--color-coral))">
-        <input type="range" min="0" max="100" value="{{ $anxiety }}" aria-label="Nivel de ansiedad" data-anxiety-range
+        <input type="range" name="anxiety_level" min="0" max="100" value="{{ $anxiety }}" aria-label="Nivel de ansiedad" data-anxiety-range
             class="absolute -top-[7px] left-0 w-full h-[22px] m-0 appearance-none bg-transparent cursor-pointer
                 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-[22px] [&::-webkit-slider-thumb]:h-[22px]
                 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-4

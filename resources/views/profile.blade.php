@@ -9,7 +9,9 @@
         <div class="flex-1">
             <div class="font-heading font-bold text-[19px] leading-[1.1] text-ink">{{ auth()->user()->name }}</div>
             <div class="text-[13.5px] text-ink-2 mt-[3px]">{{ auth()->user()->email }}</div>
-            <x-chip class="mt-[7px] bg-white" data-role-chip>Madre de Lucas</x-chip>
+            @if ($newborn = auth()->user()->newborn)
+                <x-chip class="mt-[7px] bg-white" data-role-chip>Madre de {{ $newborn->name }}</x-chip>
+            @endif
         </div>
         <a href="{{ route('profile.edit') }}" class="ms text-xl text-celeste self-start" aria-label="Editar mi perfil">edit</a>
     </div>
@@ -17,9 +19,22 @@
     <div>
         <div class="text-[12.5px] font-bold uppercase tracking-[.04em] text-ink-2 mb-[9px]">Bebé</div>
         <div class="bg-card border border-celeste-border rounded-card overflow-hidden">
-            <x-list-tile icon="child_care" title="Lucas" subtitle="Nacido el 24 jun 2026 · 14 días · Apgar 8/9">
-                <a href="{{ route('baby.edit') }}" class="text-[12.5px] font-bold text-celeste">Editar</a>
-            </x-list-tile>
+            @if ($newborn)
+                @php
+                    $ageCalculator = app(\App\Services\CorrectedAgeCalculator::class);
+                    $babySubtitle = 'Nacido el '.$newborn->birth_date->translatedFormat('d M Y').' · '.$ageCalculator->chronologicalAgeInDays($newborn).' días';
+                    if ($newborn->apgar_minute_1 || $newborn->apgar_minute_5) {
+                        $babySubtitle .= ' · Apgar '.$newborn->apgar_minute_1.'/'.$newborn->apgar_minute_5;
+                    }
+                @endphp
+                <x-list-tile icon="child_care" :title="$newborn->name" :subtitle="$babySubtitle">
+                    <a href="{{ route('baby.edit') }}" class="text-[12.5px] font-bold text-celeste">Editar</a>
+                </x-list-tile>
+            @else
+                <x-list-tile icon="child_care" title="Sin registrar" subtitle="Agrega los datos de tu bebé">
+                    <a href="{{ route('baby.create') }}" class="text-[12.5px] font-bold text-celeste">Registrar</a>
+                </x-list-tile>
+            @endif
         </div>
     </div>
 

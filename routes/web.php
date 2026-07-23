@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\MentalHealthLogController;
+use App\Http\Controllers\NewbornController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScreeningController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('home'))->name('home');
@@ -10,10 +13,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
     Route::get('/chat', fn () => view('chat'))->name('chat');
 
-    Route::get('/bitacora', fn () => view('mood-log'))->name('mood-log.index');
+    Route::get('/bitacora', [MentalHealthLogController::class, 'index'])->name('mood-log.index');
+    Route::post('/bitacora', [MentalHealthLogController::class, 'store'])->name('mood-log.store');
+    Route::delete('/bitacora/{mental_health_log}', [MentalHealthLogController::class, 'destroy'])->name('mood-log.destroy');
 
-    Route::get('/tamizaje', fn () => view('screening'))->name('screening.index');
-    Route::get('/tamizaje/resultado', fn () => view('screening-result'))->name('screening.result');
+    Route::get('/tamizaje', [ScreeningController::class, 'index'])->name('screening.index');
+    Route::post('/tamizaje', [ScreeningController::class, 'store'])->name('screening.store');
+    Route::get('/tamizaje/resultado', [ScreeningController::class, 'result'])->name('screening.result');
 
     Route::get('/bienestar', fn () => view('wellbeing'))->name('wellbeing');
     Route::get('/controles/registrar', fn () => view('log-measurement'))->name('measurements.create');
@@ -26,8 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/bebe/registrar', fn () => view('register-baby'))->name('baby.create');
-    Route::get('/bebe/editar', fn () => view('edit-baby'))->name('baby.edit');
+    Route::get('/bebe/registrar', [NewbornController::class, 'create'])->name('baby.create');
+    Route::post('/bebe/registrar', [NewbornController::class, 'store'])->name('baby.store');
+    Route::get('/bebe/editar', [NewbornController::class, 'edit'])->name('baby.edit');
+    Route::patch('/bebe/editar', [NewbornController::class, 'update'])->name('baby.update');
 });
 
 Route::get('/privacidad', fn () => view('privacy'))->name('legal.privacy');

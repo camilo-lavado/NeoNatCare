@@ -6,7 +6,7 @@
     <p class="text-base leading-[1.5] text-ink-2">Registra lo que puedas hoy — no es necesario completar todo.</p>
 
     <form data-redirect="{{ route('dashboard') }}" class="flex flex-col gap-4">
-        <x-field label="Peso de Lucas (kg)">
+        <x-field label="Peso de {{ auth()->user()->newborn->name ?? 'tu bebé' }} (kg)">
             <span class="ms">monitor_weight</span>
             <input id="weight" name="weight" type="number" step="0.01" min="0" placeholder="3,20" inputmode="decimal">
         </x-field>

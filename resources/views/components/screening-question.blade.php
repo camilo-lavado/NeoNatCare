@@ -1,6 +1,6 @@
-@props(['exitRoute', 'resultRoute'])
+@props(['exitRoute'])
 
-<div data-screening data-exit-url="{{ $exitRoute }}" data-result-url="{{ $resultRoute }}" class="flex flex-col gap-[18px] flex-1">
+<div data-screening data-exit-url="{{ $exitRoute }}" class="flex flex-col gap-[18px] flex-1">
     <div class="flex items-center gap-3">
         <button type="button" data-question-back class="ms text-[22px] text-ink-2 bg-transparent border-none">arrow_back_ios_new</button>
         <div class="flex-1 h-2 rounded-[9px] bg-celeste-border overflow-hidden">

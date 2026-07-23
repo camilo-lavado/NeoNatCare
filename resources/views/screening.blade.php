@@ -1,3 +1,6 @@
 <x-layout page="screening" title="Tamizaje breve — CuidarIA">
-    <x-screening-question :exit-route="route('dashboard')" :result-route="route('screening.result')" />
+    <form method="POST" action="{{ route('screening.store') }}" data-screening-form class="contents">
+        @csrf
+        <x-screening-question :exit-route="route('dashboard')" />
+    </form>
 </x-layout>

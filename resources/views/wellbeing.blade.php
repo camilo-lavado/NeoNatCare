@@ -7,6 +7,15 @@
         ['icon' => 'sentiment_satisfied', 'value' => 'Bien', 'label' => 'Ánimo', 'color' => 'menta-600'],
     ]" />
 
+    <a href="{{ route('screening.index') }}" class="bg-menta-100 rounded-[22px] px-4 py-[15px] flex items-center gap-[13px]">
+        <span class="ms text-2xl text-menta-600">fact_check</span>
+        <div class="flex-1">
+            <div class="text-[15px] font-bold text-menta-600">Tamizaje breve</div>
+            <div class="text-[12.5px] text-menta-600">10 preguntas · no es un diagnóstico</div>
+        </div>
+        <span class="ms text-xl text-menta-600">chevron_right</span>
+    </a>
+
     <div>
         <div class="text-[13px] font-bold text-ink mb-[10px]">Ánimo esta semana</div>
         <x-bar-chart :height="130" :bars="[
@@ -30,13 +39,6 @@
 
     <div>
         <div class="text-[13px] font-bold text-ink mb-[10px]">Red de apoyo</div>
-        <a href="{{ route('urgent.caregiver') }}" class="bg-coral-bg rounded-[20px] p-[18px] flex items-center gap-[14px]">
-            <span class="ms w-11 h-11 rounded-[14px] bg-white flex items-center justify-center text-[22px] text-coral-text flex-none">volunteer_activism</span>
-            <div class="flex-1">
-                <div class="text-[14.5px] font-bold text-coral-text">Líneas de contención emocional</div>
-                <div class="text-[12.5px] text-coral-text mt-[2px]">Salud Responde · 600 360 7777, disponible 24/7</div>
-            </div>
-            <span class="ms text-xl text-coral-text">chevron_right</span>
-        </a>
+        @include('partials.support-line')
     </div>
 </x-layout>

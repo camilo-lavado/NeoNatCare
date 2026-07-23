@@ -4,7 +4,7 @@
     </x-slot:topbar>
 
     <div class="px-[22px] pt-3">
-        <x-chat-mode-toggle />
+        <x-chat-mode-toggle :baby-name="auth()->user()->newborn->name ?? 'tu bebé'" />
     </div>
 
     <div class="py-2 px-[22px] flex items-center justify-center gap-[6px] font-bold text-xs leading-[1.3] mt-[10px] bg-celeste-tint text-celeste"
@@ -18,7 +18,7 @@
 
     <div class="flex-1 px-[22px] py-4 flex flex-col gap-[13px] overflow-y-auto" data-mode-panel="baby">
         <div class="max-w-[84%] rounded-[20px_20px_20px_6px] px-[15px] py-[13px] text-[15px] leading-[1.5] bg-card border border-celeste-border text-ink">
-            Hola Valentina, soy tu asistente. ¿En qué te ayudo con Lucas hoy?
+            Hola {{ auth()->user()->name }}, soy tu asistente. ¿En qué te ayudo con {{ auth()->user()->newborn->name ?? 'tu bebé' }} hoy?
         </div>
         <div class="self-end max-w-[84%] rounded-[20px_20px_6px_20px] px-[15px] py-[13px] text-[15px] leading-[1.5] text-[#173037] bg-celeste-soft">
             Mi bebé tiene 37,8 °C, ¿debo preocuparme?
@@ -50,7 +50,7 @@
 
     <div class="flex-1 px-[22px] py-4 hidden flex flex-col gap-[13px] overflow-y-auto" data-mode-panel="self">
         <div class="max-w-[84%] rounded-[20px_20px_20px_6px] px-[15px] py-[13px] text-[15px] leading-[1.5] bg-card border border-celeste-border text-ink">
-            Hola Valentina. Este espacio es para ti. ¿Cómo te has sentido hoy?
+            Hola {{ auth()->user()->name }}. Este espacio es para ti. ¿Cómo te has sentido hoy?
         </div>
         <div class="self-end max-w-[84%] rounded-[20px_20px_6px_20px] px-[15px] py-[13px] text-[15px] leading-[1.5] text-[#173037] bg-menta-soft">
             Siento que no duermo nada y a veces me dan ganas de llorar sin razón

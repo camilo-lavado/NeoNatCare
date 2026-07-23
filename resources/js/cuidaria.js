@@ -76,6 +76,7 @@ function setChatMode(mode) {
 function initMoodLog() {
     const moodOptions = document.querySelectorAll("[data-mood-option]");
     if (!moodOptions.length) return;
+    const moodHidden = document.querySelector("[data-mood-hidden]");
     moodOptions.forEach((option) => {
         option.addEventListener("click", () => {
             moodOptions.forEach((o) => {
@@ -90,6 +91,7 @@ function initMoodLog() {
                 label?.classList.toggle("font-bold", selected);
                 label?.classList.toggle("text-ink-2", !selected);
             });
+            if (moodHidden) moodHidden.value = option.dataset.moodOption;
         });
     });
 }
@@ -98,6 +100,7 @@ function initMoodLog() {
 function initChipSelectors() {
     document.querySelectorAll("[data-chip-group]").forEach((group) => {
         const chips = group.querySelectorAll(".chip-option");
+        const sleepHidden = group.closest("form")?.querySelector("[data-sleep-hidden]");
         chips.forEach((chip) => {
             chip.addEventListener("click", () => {
                 chips.forEach((c) => {
@@ -106,12 +109,13 @@ function initChipSelectors() {
                 });
                 chip.classList.remove(...UNSELECTED_CHIP_CLASSES);
                 chip.classList.add(...SELECTED_CHIP_CLASSES);
+                if (sleepHidden && chip.dataset.sleep) sleepHidden.value = chip.dataset.sleep;
             });
         });
     });
 }
 
-/* Formularios sin backend real todavía (bitácora, controles, datos del bebé):
+/* Formularios sin backend real todavía (bitácora, controles):
    simplemente evitan el submit real y navegan a la siguiente pantalla. */
 function initFakeSubmitForms() {
     document.querySelectorAll("form[data-redirect]").forEach((form) => {
@@ -162,19 +166,75 @@ function initRolePersonalization() {
     }
 }
 
-/* Tamizaje breve: flujo de preguntas cliente-side, sin recargar página */
-const SCREENING_QUESTIONS = [
-    "¿Con qué frecuencia has sentido que no puedes controlar los sucesos importantes de tu vida?",
-    "¿Con qué frecuencia te has sentido segura de tu capacidad para manejar tus problemas personales?",
-    "En las últimas 2 semanas, ¿con qué frecuencia te has sentido abrumada o sin poder controlar las cosas importantes para ti?",
-    "¿Con qué frecuencia has sentido que las dificultades se acumulan tanto que no puedes superarlas?",
-    "¿Con qué frecuencia has dormido menos de lo que tu cuerpo necesita por cuidar a tu bebé?",
-    "¿Con qué frecuencia has sentido ganas de llorar sin una razón clara?",
-    "¿Con qué frecuencia has podido pedir ayuda cuando la has necesitado?",
-    "¿Con qué frecuencia te has sentido conectada emocionalmente con tu bebé?",
+/* Tamizaje breve: Escala de Depresión Posparto de Edimburgo (EPDS), 10 ítems.
+   Traducción española estándar ampliamente publicada — TODO(CuidarIA): verificar
+   la redacción exacta contra el PDF oficial de MINSAL antes de producción (ver
+   docs/RAG-FUENTES.md, la lectura automática del PDF quedó bloqueada).
+   El puntaje real (suma, nivel, alerta de la pregunta 10) se calcula en el
+   servidor (App\Services\EpdsScorer) — el cliente solo recolecta las respuestas
+   y las envía en un POST real; no se calcula ni se decide nada sensible acá. */
+const EPDS_ITEMS = [
+    { text: "He sido capaz de reír y ver el lado bueno de las cosas", options: [
+        { label: "Tanto como siempre", value: 0 },
+        { label: "No tanto ahora", value: 1 },
+        { label: "Mucho menos ahora", value: 2 },
+        { label: "No, nada en absoluto", value: 3 },
+    ] },
+    { text: "He mirado el futuro con placer", options: [
+        { label: "Tanto como siempre", value: 0 },
+        { label: "Algo menos de lo que solía hacer", value: 1 },
+        { label: "Definitivamente menos ahora", value: 2 },
+        { label: "No, nada en absoluto", value: 3 },
+    ] },
+    { text: "Me he culpado sin necesidad cuando las cosas no salían bien", options: [
+        { label: "Sí, la mayoría de las veces", value: 3 },
+        { label: "Sí, algunas veces", value: 2 },
+        { label: "No muy a menudo", value: 1 },
+        { label: "No, nunca", value: 0 },
+    ] },
+    { text: "He estado ansiosa y preocupada sin motivo", options: [
+        { label: "No, para nada", value: 0 },
+        { label: "Casi nada", value: 1 },
+        { label: "Sí, a veces", value: 2 },
+        { label: "Sí, a menudo", value: 3 },
+    ] },
+    { text: "He sentido miedo y pánico sin motivo alguno", options: [
+        { label: "Sí, bastante", value: 3 },
+        { label: "Sí, a veces", value: 2 },
+        { label: "No, no mucho", value: 1 },
+        { label: "No, nada", value: 0 },
+    ] },
+    { text: "Las cosas me han estado abrumando", options: [
+        { label: "Sí, la mayor parte del tiempo no he podido afrontarlas bien", value: 3 },
+        { label: "Sí, a veces no he podido afrontarlas tan bien como siempre", value: 2 },
+        { label: "No, la mayor parte del tiempo las he afrontado bastante bien", value: 1 },
+        { label: "No, he estado afrontando las cosas tan bien como siempre", value: 0 },
+    ] },
+    { text: "Me he sentido tan infeliz que he tenido dificultades para dormir", options: [
+        { label: "Sí, la mayoría de las veces", value: 3 },
+        { label: "Sí, a veces", value: 2 },
+        { label: "No muy a menudo", value: 1 },
+        { label: "No, nada", value: 0 },
+    ] },
+    { text: "Me he sentido triste y desgraciada", options: [
+        { label: "Sí, la mayoría de las veces", value: 3 },
+        { label: "Sí, bastante a menudo", value: 2 },
+        { label: "No muy a menudo", value: 1 },
+        { label: "No, nada", value: 0 },
+    ] },
+    { text: "Me he sentido tan infeliz que he estado llorando", options: [
+        { label: "Sí, la mayoría de las veces", value: 3 },
+        { label: "Sí, bastante a menudo", value: 2 },
+        { label: "Solo en alguna ocasión", value: 1 },
+        { label: "No, nunca", value: 0 },
+    ] },
+    { text: "Se me ha ocurrido la idea de hacerme daño", options: [
+        { label: "Sí, bastante a menudo", value: 3 },
+        { label: "A veces", value: 2 },
+        { label: "Casi nunca", value: 1 },
+        { label: "Nunca", value: 0 },
+    ] },
 ];
-
-const SCREENING_OPTIONS = ["Nunca", "Algunos días", "Más de la mitad de los días", "Casi todos los días"];
 
 const OPTION_BASE_CLASSES = ["px-[18px]", "py-4", "rounded-2xl", "text-[15px]", "text-left"];
 const OPTION_UNSELECTED_CLASSES = ["border-[1.5px]", "border-celeste-border", "bg-card", "text-ink"];
@@ -184,37 +244,37 @@ function initScreening() {
     const root = document.querySelector("[data-screening]");
     if (!root) return;
 
+    const form = document.querySelector("[data-screening-form]");
     const progressFill = root.querySelector("[data-progress-fill]");
     const progressLabel = root.querySelector("[data-progress-label]");
     const questionEl = root.querySelector("[data-question-text]");
     const optionList = root.querySelector("[data-option-list]");
     const backBtn = root.querySelector("[data-question-back]");
     const exitUrl = root.dataset.exitUrl;
-    const resultUrl = root.dataset.resultUrl;
 
     let step = 0;
-    const answers = new Array(SCREENING_QUESTIONS.length).fill(null);
+    const answers = new Array(EPDS_ITEMS.length).fill(null);
 
     function render() {
-        const total = SCREENING_QUESTIONS.length;
+        const total = EPDS_ITEMS.length;
         progressFill.style.width = `${((step + 1) / total) * 100}%`;
         progressLabel.textContent = `Pregunta ${step + 1} de ${total}`;
-        questionEl.textContent = SCREENING_QUESTIONS[step];
+        questionEl.textContent = EPDS_ITEMS[step].text;
 
         optionList.innerHTML = "";
-        SCREENING_OPTIONS.forEach((label, idx) => {
+        EPDS_ITEMS[step].options.forEach((option) => {
             const btn = document.createElement("button");
             btn.type = "button";
-            const isSelected = answers[step] === idx;
+            const isSelected = answers[step] === option.value;
             btn.classList.add(...OPTION_BASE_CLASSES, ...(isSelected ? OPTION_SELECTED_CLASSES : OPTION_UNSELECTED_CLASSES));
-            btn.textContent = label;
+            btn.textContent = option.label;
             btn.addEventListener("click", () => {
-                answers[step] = idx;
+                answers[step] = option.value;
                 if (step < total - 1) {
                     step += 1;
                     render();
                 } else {
-                    finishScreening(answers, resultUrl);
+                    submitScreening(answers, form);
                 }
             });
             optionList.appendChild(btn);
@@ -235,19 +295,17 @@ function initScreening() {
     render();
 }
 
-function finishScreening(answers, resultUrl) {
-    const total = answers.reduce((sum, v) => sum + (v ?? 0), 0);
-    const max = answers.length * 3;
-    const ratio = total / max;
-
-    let level = "Leve";
-    if (ratio >= 0.66) level = "Alto";
-    else if (ratio >= 0.33) level = "Leve–moderado";
-
-    try {
-        sessionStorage.setItem("cuidaria_screening_level", level);
-    } catch (e) {
-        /* sessionStorage puede no estar disponible (modo privado); seguimos igual */
-    }
-    window.location.href = resultUrl;
+/* Envía las 10 respuestas como un POST real a ScreeningController@store.
+   El cálculo del puntaje, el nivel, y la derivación por la pregunta 10
+   ocurren en el servidor — ver App\Services\EpdsScorer. */
+function submitScreening(answers, form) {
+    if (!form) return;
+    answers.forEach((value) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "answers[]";
+        input.value = String(value);
+        form.appendChild(input);
+    });
+    form.submit();
 }

@@ -22,9 +22,15 @@
                 </div>
             </div>
             <div class="flex-1">
-                <div class="font-heading font-bold text-xl leading-none text-ink">Lucas</div>
-                <div class="text-sm text-ink-2 mt-[3px]">14 días de vida</div>
-                <x-chip class="mt-[7px] bg-white">Edad corregida: 6 días</x-chip>
+                @if ($newborn = auth()->user()->newborn)
+                    @php($ageCalculator = app(\App\Services\CorrectedAgeCalculator::class))
+                    <div class="font-heading font-bold text-xl leading-none text-ink">{{ $newborn->name }}</div>
+                    <div class="text-sm text-ink-2 mt-[3px]">{{ $ageCalculator->chronologicalAgeInDays($newborn) }} días de vida</div>
+                    <x-chip class="mt-[7px] bg-white">Edad corregida: {{ $ageCalculator->correctedAgeInDays($newborn) }} días</x-chip>
+                @else
+                    <div class="font-heading font-bold text-xl leading-none text-ink">Tu bebé</div>
+                    <a href="{{ route('baby.create') }}" class="text-sm text-celeste font-bold mt-[3px] inline-block">Registrar datos del bebé</a>
+                @endif
             </div>
         </div>
         <div class="flex gap-[10px] mt-[14px]">
